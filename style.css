@@ -1,0 +1,62 @@
+* {
+    margin: 0; /* zerar a margem de todos os elementos */
+    padding: 0; /* zerar o espaçamento interno de todos os elementos */
+    box-sizing: border-box; /* incluir padding e borda no cálculo do tamanho do elemento */
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+header {
+    background-color: #333; /* cor de fundo */
+    color: #fff; /* cor do texto */
+    text-align: center; /* alinhamento centralizado */
+    padding-top: 20px; /* espaçamento interno superior */
+    padding-bottom: 20px; /* espaçamento interno inferior */
+    padding-left: 20px; /* espaçamento interno esquerdo */
+    padding-right: 20px; /* espaçamento interno direito */
+}
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    
+    /* assim (cima, baixo, esquerda, direita) */
+    padding: 20px 20px 20px 20px;
+    /* ou 20px em todas as direções */
+    padding: 20px;
+}
+nav ul {
+    list-style: none; /* Remove o estilo da lista */
+}
+
+nav li {
+    display: inline; /* Deixa os itens da lista em linha */
+    margin-right: 20px; /* Adiciona um espaçamento de 20px entre os itens da lista */
+}
+
+nav a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    font-weight: bold; /* Deixa o texto em negrito */
+    color: #fff; /* Cor do texto */
+}
+main {
+    padding: 20px; /* espaçamento interno */
+    overflow: hidden; /* esconde o conteúdo que ultrapassa o tamanho do elemento */
+}
+.card {
+    width: calc(33.33% - 20px); /* 33.33% - 20px */
+    height: 500px; /* altura de 500px */
+    margin: 10px; /* margem de 10px para cima e para baixo */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    float: left; /* flutua o elemento para a esquerda */
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
