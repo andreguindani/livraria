@@ -6,7 +6,7 @@
     font-family: Rubik;
 }
 body {
-    font-family: Arial, sans-serif; /* Define a fonte padrão */
+    font-family: Rubik, sans-serif; /* Define a fonte padrão */
     background-color: rgb(0, 87, 0); /* Define a cor de fundo */
 }
 header {
