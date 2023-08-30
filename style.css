@@ -1,30 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 * {
-    margin: 0; /* zerar a margem de todos os elementos */
-    padding: 0; /* zerar o espaçamento interno de todos os elementos */
-    box-sizing: border-box; /* incluir padding e borda no cálculo do tamanho do elemento */
+    margin: 0; /* Remove a margem padrão */
+    padding: 0; /* Remove o padding padrão */
+    box-sizing: border-box; /* Faz com que o padding e a borda não aumentem o tamanho do elemento */
+    font-family: Rubik;
 }
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
 header {
-    background-color: #333; /* cor de fundo */
-    color: #fff; /* cor do texto */
-    text-align: center; /* alinhamento centralizado */
-    padding-top: 20px; /* espaçamento interno superior */
-    padding-bottom: 20px; /* espaçamento interno inferior */
-    padding-left: 20px; /* espaçamento interno esquerdo */
-    padding-right: 20px; /* espaçamento interno direito */
-}
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    
-    /* assim (cima, baixo, esquerda, direita) */
-    padding: 20px 20px 20px 20px;
-    /* ou 20px em todas as direções */
-    padding: 20px;
+    background-color: #0b7454; /* Define a cor de fundo */
+    color: #fff; /* Define a cor do texto */
+    text-align: center; /* Centraliza o texto */
+    padding: 1rem; /* Define um espaçamento interno */
 }
 nav ul {
     list-style: none; /* Remove o estilo da lista */
@@ -54,9 +43,32 @@ main {
     text-align: center;
     float: left; /* flutua o elemento para a esquerda */
 }
+
+.card img {
+    max-width: 100%; /* Define a largura máxima da imagem */
+    height: 350px; /* Define a altura da imagem */
+}
+
+.card button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 10px;
+    cursor: pointer; /* Muda o cursor do mouse */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.card button:hover {
+    background-color: #555; /* Muda a cor de fundo ao passar o mouse */
+}
+
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 1rem;
+}
+nav li :hover{
+    color: rgb(0, 87, 0);
 }
