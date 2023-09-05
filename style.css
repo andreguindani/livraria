@@ -1,52 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 * {
-    margin: 0; /* Remove a margem padrão */
-    padding: 0; /* Remove o padding padrão */
-    box-sizing: border-box; /* Faz com que o padding e a borda não aumentem o tamanho do elemento */
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
     font-family: Rubik;
 }
 body {
-    font-family: Rubik, sans-serif; /* Define a fonte padrão */
-    background-color: rgb(0, 87, 0); /* Define a cor de fundo */
+    font-family: Rubik, sans-serif; 
+    background-color: rgb(0, 87, 0); 
 }
 header {
-    background-color: #0b7454; /* Define a cor de fundo */
-    color: #fff; /* Define a cor do texto */
-    text-align: center; /* Centraliza o texto */
-    padding: 1rem; /* Define um espaçamento interno */
+    background-color: #0b7454; 
+    color: #fff; 
+    text-align: center; 
+    padding: 1rem; 
 }
 nav ul {
-    list-style: none; /* Remove o estilo da lista */
+    list-style: none; 
 }
 
 nav li {
-    display: inline; /* Deixa os itens da lista em linha */
-    margin-right: 20px; /* Adiciona um espaçamento de 20px entre os itens da lista */
+    display: inline; 
+    margin-right: 20px; 
 }
 
 nav a {
-    text-decoration: none; /* Remove o sublinhado dos links */
-    font-weight: bold; /* Deixa o texto em negrito */
-    color: #fff; /* Cor do texto */
+    text-decoration: none; 
+    font-weight: bold; 
+    color: #fff; 
 }
 main {
-    padding: 20px; /* espaçamento interno */
-    overflow: hidden; /* esconde o conteúdo que ultrapassa o tamanho do elemento */
+    padding: 20px; 
+    overflow: hidden; 
 }
 .card {
-    width: calc(33.33% - 20px); /* 33.33% - 20px */
-    height: 500px; /* altura de 500px */
-    margin: 10px; /* margem de 10px para cima e para baixo */
+    width: calc(33.33% - 20px); 
+    height: 500px; 
+    margin: 10px; 
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    float: left; /* flutua o elemento para a esquerda */
+    float: left; 
 }
 
 .card img {
-    max-width: 100%; /* Define a largura máxima da imagem */
-    height: 350px; /* Define a altura da imagem */
+    max-width: 100%; 
+    height: 350px; 
 }
 
 .card button {
@@ -55,12 +55,12 @@ main {
     border: none;
     padding: 8px 16px;
     margin-top: 10px;
-    cursor: pointer; /* Muda o cursor do mouse */
-    transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
 .card button:hover {
-    background-color: #555; /* Muda a cor de fundo ao passar o mouse */
+    background-color: #555; 
 }
 
 footer {
@@ -136,8 +136,8 @@ input[type="number"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: vertical; /* Permite redimensionar verticalmente o textarea */
-    height: 120px; /* Altura inicial do textarea */
+    resize: vertical; 
+    height: 120px; 
   }
   
   select {
@@ -152,15 +152,11 @@ input[type="number"] {
     border: none;
     border-radius: 4px;
     padding: 10px;
-    cursor: pointer; /* Adiciona um cursor de ponteiro */
+    cursor: pointer; 
   }
-  
-  /* Botão de Limpar */
   button[type="reset"] {
     background-color: #6c757d;
   }
-  
-  /* Botão de Enviar */
   button:hover {
     background-color: #0056b3;
   }
