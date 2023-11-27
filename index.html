@@ -26,23 +26,34 @@
                 <img src="img/placa-mae-gigabyte-h510m-h-chipset-h510-intel-lga-1200-matx-ddr4_122404.webp" alt="placa h510m">
                 <h2>Placa Mãe Gigabyte H510M</h2>
                 <p></p>
-                <button>Comprar</button>
+                <button onclick="adicionarAoCarrinho(productId)">Adicionar ao carrinho</button>
             </div>
 
             <div class="card">
                 <img src="img/processador_intel_core_i3_7100_cache_3m_3_90_ghz_93_1_c318a19d12a274b29640fe825ebb7c72.webp" alt="i3-3225">
                 <h2>Processador Intel® Core® I3-3225</h2>
                 <p></p>
-                <button>Comprar</button>
+                <button>Adicionar ao carrinho</button>
             </div>
 
             <div class="card">
                 <img src="img/placa_de_video_asus_geforce_rtx_2080_ti_rog_strix_gaming_11gb_gddr6_352bit_rog_strix_rtx2080ti_11g_g_71_1_20200226101732.webp" alt="Livro 3">
                 <h2>RTX 2080 ti</h2>
                 <p></p>
-                <button>Comprar</button>
+                <button>Adicionar ao carrinho</button>
             </div>
         </section>
+
+        <div id="products">
+            <h2>Produtos</h2>
+            <ul id="productList"></ul>
+        </div>
+    
+        <div id="cart">
+            <h2>Carrinho</h2>
+            <ul id="cartList"></ul>
+            <p>Total: R$<span id="total">0.00</span></p>
+        </div>
     </main>
 
     <footer>
