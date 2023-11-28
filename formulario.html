@@ -10,41 +10,33 @@
 </head>
 
 <body>
-    <div id="products">
-        <h2>Produtos</h2>
-        <ul id="productList"></ul>
+    <div class="container form">
+        <div id="cart">
+            <h2>Carrinho</h2>
+            <ul id="cartList"></ul>
+            <p>Total: R$<span id="total">0.00</span></p>
+        </div>
+
+        <form id="checkoutForm" action="http://jkorpela.fi/cgi-bin/echo.cgi">
+            <fieldset>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" required><br>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" oninput="mascara(this)" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required><br>
+
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" required><br>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" pattern="\d{5}-\d{3}" required>
+
+                <button type="submit" onclick="concluirCompra()">Finalizar Compra</button>
+            </fieldset>
     </div>
-
-    <div id="cart">
-        <h2>Carrinho</h2>
-        <ul id="cartList"></ul>
-        <p>Total: R$<span id="total">0.00</span></p>
-    </div>
-
-    <form id="checkoutForm">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" required>
-
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
-        <small>Formato: 123.456.789-01</small>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" required>
-
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" required>
-        <small>Formato: (99) 99999-9999</small>
-
-        <label for="cep">CEP:</label>
-        <input type="text" id="cep" pattern="\d{5}-\d{3}" required>
-        <small>Formato: 12345-678</small>
-
-        <button type="button" onclick="concluirCompra()">Finalizar Compra</button>
-
-        <script>
-        
-    </script>
 </body>
 
 </html>

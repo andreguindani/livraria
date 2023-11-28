@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="myscript.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Aguabyte</h1>
@@ -22,42 +24,47 @@
     </header>
     <main>
         <section class="cards">
-            <div class="card">
-                <img src="img/placa-mae-gigabyte-h510m-h-chipset-h510-intel-lga-1200-matx-ddr4_122404.webp" alt="placa h510m">
-                <h2>Placa Mãe Gigabyte H510M</h2>
-                <p></p>
-                <button onclick="adicionarAoCarrinho(productId)">Adicionar ao carrinho</button>
+            <div id="products">
+                <div id="productList">
+                    <div data-id="1" data-nome="h510m" data-preco="600.00" class="card">
+                        <img src="img/placa-mae-gigabyte-h510m-h-chipset-h510-intel-lga-1200-matx-ddr4_122404.webp"
+                            alt="" width="300px">
+                        <h2>Placa mãe gigabyte h510m</h2>
+                        <button onclick="adicionarAoCarrinho(1)">Adicionar ao carrinho</button>
+                    </div>
+
+                    <div data-id="2" data-nome="i3-7100" data-preco="250.00" class="card">
+                        <img id="processador"
+                            src="img/processador_intel_core_i3_7100_cache_3m_3_90_ghz_93_1_c318a19d12a274b29640fe825ebb7c72.webp"
+                            alt="i3-3225">
+                        <h2>Processador Intel® Core® I3-7100</h2>
+                        <button onclick="adicionarAoCarrinho(2)">Adicionar ao carrinho</button>
+                    </div>
+
+                    <div data-id="3" data-nome="2080ti" data-preco="1999.99" class="card">
+                        <img id="placa de video"
+                            src="img/placa_de_video_asus_geforce_rtx_2080_ti_rog_strix_gaming_11gb_gddr6_352bit_rog_strix_rtx2080ti_11g_g_71_1_20200226101732.webp"
+                            alt="Livro 3">
+                        <h2>RTX 2080 ti</h2>
+                        <button onclick="adicionarAoCarrinho(3)">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+            <div id="cart">
+                <h2>Carrinho</h2>
+                <ul id="cartList"></ul>
+                <p>Total: R$<span id="total">0.00</span></p>
+                <button onclick="finalizarCompra()">Finalizar Compra</button>
+            </div>
             </div>
 
-            <div class="card">
-                <img src="img/processador_intel_core_i3_7100_cache_3m_3_90_ghz_93_1_c318a19d12a274b29640fe825ebb7c72.webp" alt="i3-3225">
-                <h2>Processador Intel® Core® I3-3225</h2>
-                <p></p>
-                <button>Adicionar ao carrinho</button>
-            </div>
-
-            <div class="card">
-                <img src="img/placa_de_video_asus_geforce_rtx_2080_ti_rog_strix_gaming_11gb_gddr6_352bit_rog_strix_rtx2080ti_11g_g_71_1_20200226101732.webp" alt="Livro 3">
-                <h2>RTX 2080 ti</h2>
-                <p></p>
-                <button>Adicionar ao carrinho</button>
-            </div>
         </section>
 
-        <div id="products">
-            <h2>Produtos</h2>
-            <ul id="productList"></ul>
-        </div>
-    
-        <div id="cart">
-            <h2>Carrinho</h2>
-            <ul id="cartList"></ul>
-            <p>Total: R$<span id="total">0.00</span></p>
-        </div>
     </main>
 
     <footer>
         <p>&copy; 2023 Livraria Fantástica | Criado por André Kolett Guindani</p>
     </footer>
 </body>
+
 </html>

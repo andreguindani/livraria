@@ -1,53 +1,87 @@
-        // Exemplo de produtos
-        var products = [
-            { id: 1, nome: "Livro 1", preco: 20.00 },
-            { id: 2, nome: "Livro 2", preco: 15.00 },
-            { id: 3, nome: "Livro 3", preco: 25.00 }
-        ];
+var cart = [];
+var storedCart = localStorage.getItem('cart');
+var cart = storedCart ? JSON.parse(storedCart) : [];
+var salesHistory = localStorage.getItem('salesHistory') ? JSON.parse(localStorage.getItem('salesHistory')) : [];
 
-        // Inicializar lista de produtos
-        $(document).ready(function() {
-            var productList = $("#productList");
-            products.forEach(function(product) {
-                productList.append(`<li>${product.nome} - R$${product.preco.toFixed(2)} <button onclick="adicionarAoCarrinho(${product.id})">Adicionar</button></li>`);
-            });
-        });
+function adicionarAoCarrinho(productId) {
+    var product = document.querySelector(`#productList div[data-id="${productId}"]`);
+    var productData = {
+        id: productId,
+        nome: product.getAttribute("data-nome"),
+        preco: parseFloat(product.getAttribute("data-preco")),
+        quantidade: 1
+    };
 
-        // Função para adicionar produto ao carrinho
-        function adicionarAoCarrinho(productId) {
-            var product = products.find(p => p.id === productId);
-            cart.push(product);
-            atualizarCarrinho();
-        }
+    var existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantidade++;
+    } else {
+        cart.push(productData);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    atualizarCarrinho();
+}
 
-        // Função para remover produto do carrinho
-        function removerDoCarrinho(productId) {
-            cart.splice(index, 1);
-            atualizarCarrinho();
-        }
+function removerDoCarrinho(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    atualizarCarrinho();
 
-        // Função para calcular o total do carrinho
-        function calcularTotal() {
-            return cart.reduce((total, product) => total + product.preco, 0);
-        }
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
 
-        function atualizarCarrinho() {
-            var cartList = $("#cartList");
-            cartList.empty();
-            
-            cart.forEach(function(product, index) {
-                cartList.append(`<li>${product.nome} - R$${product.preco.toFixed(2)} <button onclick="removerDoCarrinho(${index})">Remover</button></li>`);
-            });
+function calcularTotal() {
+    return cart.reduce((total, item) => total + item.preco * item.quantidade, 0);
+}
 
-            var totalElement = $("#total");
-            var total = calcularTotal();
-            totalElement.text(total.toFixed(2));
-        }
+function atualizarCarrinho() {
+    var cartList = document.getElementById("cartList");
+    cartList.innerHTML = "";
 
-        // Função para finalizar a compra
-        function concluirCompra() {
-            // Adicione a lógica para validar o formulário
-            // Se tudo estiver certo, envie os dados para o servidor
-            // Use AJAX para enviar dados ao servidor
-            // Exemplo: $.post("http://jkorpela.fi/cgi-bin/echo.cgi", $("#checkoutForm").serialize(), function(data) { console.log(data); });
-        }
+    cart.forEach(item => {
+        var listItem = document.createElement("li");
+        listItem.innerHTML = `${item.quantidade}x ${item.nome} - R$${(item.preco * item.quantidade).toFixed(2)} <button onclick="removerDoCarrinho(${item.id})">Remover</button>`;
+        cartList.appendChild(listItem);
+    });
+
+    var totalElement = document.getElementById("total");
+    totalElement.textContent = calcularTotal().toFixed(2);
+}
+
+function finalizarCompra() {
+    if (cart.length > 0) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        var totalValue = calcularTotal();
+        salesHistory.push(totalValue);
+        localStorage.setItem('salesHistory', JSON.stringify(salesHistory));
+
+        window.location.href = 'formulario.html'
+        alert("Compra finalizada! Total: R$" + calcularTotal().toFixed(2));
+    } else {
+        alert("Adicione produtos ao carrinho antes de finalizar a compra.");
+    }
+}
+window.addEventListener('load', function () {
+    var storedCart = localStorage.getItem('cart');
+    cart = storedCart ? JSON.parse(storedCart) : [];
+    var storedSalesHistory = localStorage.getItem('salesHistory');
+    salesHistory = storedSalesHistory ? JSON.parse(storedSalesHistory) : [];
+    atualizarCarrinho();
+});
+
+console.log("Vendas" + salesHistory)
+
+
+function mascara(i){
+   
+    var v = i.value;
+    
+    if(isNaN(v[v.length-1])){ 
+       i.value = v.substring(0, v.length-1);
+       return;
+    }
+    
+    i.setAttribute("maxlength", "14");
+    if (v.length == 3 || v.length == 7) i.value += ".";
+    if (v.length == 11) i.value += "-";
+ 
+     }

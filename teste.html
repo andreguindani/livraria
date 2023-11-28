@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja Online</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Adicione estilos conforme necessário */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        #products {
+            width: 60%;
+        }
+
+        #cart {
+            width: 35%;
+        }
+
+        #cartList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #cartList li {
+            margin-bottom: 10px;
+        }
+
+        #total {
+            font-weight: bold;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minha Loja Online</h1>
+
+    <div id="products">
+        <h2>Produtos</h2>
+        <ul id="productList">
+            <li data-id="1" data-preco="10.00">
+                <h2>Produto A</h2>
+                <img src="img/placa-mae-gigabyte-h510m-h-chipset-h510-intel-lga-1200-matx-ddr4_122404.webp" alt="" width="300px">
+                <button onclick="adicionarAoCarrinho(1)">Adicionar</button></li>
+            <li data-id="2" data-preco="20.00">Produto B - R$20.00 <button onclick="adicionarAoCarrinho(2)">Adicionar</button></li>
+            <li data-id="3" data-preco="15.00">Produto C - R$15.00 <button onclick="adicionarAoCarrinho(3)">Adicionar</button></li>
+        </ul>
+    </div>
+
+    <div id="cart">
+        <h2>Carrinho</h2>
+        <ul id="cartList"></ul>
+        <p>Total: R$<span id="total">0.00</span></p>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+
+    <script>
+        var cart = [];
+
+        function adicionarAoCarrinho(productId) {
+            var product = document.querySelector(`#productList li[data-id="${productId}"]`);
+            var productData = {
+                id: productId,
+                preco: parseFloat(product.getAttribute("data-preco")),
+                quantidade: 1
+            };
+
+            var existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantidade++;
+            } else {
+                cart.push(productData);
+            }
+
+            atualizarCarrinho();
+        }
+
+        function removerDoCarrinho(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            atualizarCarrinho();
+        }
+
+        function calcularTotal() {
+            return cart.reduce((total, item) => total + item.preco * item.quantidade, 0);
+        }
+
+        function atualizarCarrinho() {
+            var cartList = document.getElementById("cartList");
+            cartList.innerHTML = "";
+
+            cart.forEach(item => {
+                var listItem = document.createElement("li");
+                listItem.innerHTML = `${item.quantidade}x Produto ${item.id} - R$${(item.preco * item.quantidade).toFixed(2)} <button onclick="removerDoCarrinho(${item.id})">Remover</button>`;
+                cartList.appendChild(listItem);
+            });
+
+            var totalElement = document.getElementById("total");
+            totalElement.textContent = calcularTotal().toFixed(2);
+        }
+
+        function finalizarCompra() {
+            if (cart.length > 0) {
+                // Adicionar lógica para finalizar a compra, talvez redirecionar para um formulário de checkout
+                alert("Compra finalizada! Total: R$" + calcularTotal().toFixed(2));
+            } else {
+                alert("Adicione produtos ao carrinho antes de finalizar a compra.");
+            }
+        }
+    </script>
+</body>
+</html>
