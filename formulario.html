@@ -4,39 +4,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulário de Compra</title>
     <link rel="stylesheet" href="style.css">
     <script src="myscript.js"></script>
+    <script>
+        function validarFormulario() {
+            // Obter valores dos campos
+            var nome = document.getElementById('nome').value;
+            var cpf = document.getElementById('cpf').value;
+            var email = document.getElementById('email').value;
+            var telefone = document.getElementById('telefone').value;
+            var cep = document.getElementById('cep').value;
+
+            // Expressões regulares para validação
+            var regexCpf = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+            var regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
+            var regexCep = /^\d{5}-\d{3}$/;
+
+            // Verificar se os campos estão preenchidos corretamente
+            if (nome === '' || cpf === '' || email === '' || telefone === '' || cep === '') {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+
+            if (!regexCpf.test(cpf)) {
+                alert('Por favor, insira um CPF válido.');
+                return false;
+            }
+
+            if (!regexEmail.test(email)) {
+                alert('Por favor, insira um email válido.');
+                return false;
+            }
+
+            if (!regexTelefone.test(telefone)) {
+                alert('Por favor, insira um número de telefone válido.');
+                return false;
+            }
+
+            if (!regexCep.test(cep)) {
+                alert('Por favor, insira um CEP válido.');
+                return false;
+            }
+
+            alert('Compra efetuada com sucesso');
+            return true;
+        }
+
+        function mascara(i){
+   
+   var v = i.value;
+   
+   if(isNaN(v[v.length-1])){ 
+      i.value = v.substring(0, v.length-1);
+      return;
+   }
+   
+   i.setAttribute("maxlength", "14");
+   if (v.length == 3 || v.length == 7) i.value += ".";
+   if (v.length == 11) i.value += "-";
+
+    }
+    </script>
 </head>
 
 <body>
-    <div class="container form">
-        <div id="cart">
-            <h2>Carrinho</h2>
-            <ul id="cartList"></ul>
-            <p>Total: R$<span id="total">0.00</span></p>
-        </div>
+<div class="container form">
+    <h2>Formulário de Compra</h2>
 
-        <form id="checkoutForm" action="http://jkorpela.fi/cgi-bin/echo.cgi">
-            <fieldset>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" required><br>
-
-                <label for="cpf">CPF:</label>
-                <input type="text" id="cpf" oninput="mascara(this)" required><br>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" required><br>
-
-                <label for="telefone">Telefone:</label>
-                <input type="tel" id="telefone" pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" required><br>
-
-                <label for="cep">CEP:</label>
-                <input type="text" id="cep" pattern="\d{5}-\d{3}" required>
-
-                <button type="submit" onclick="concluirCompra()">Finalizar Compra</button>
-            </fieldset>
+    <div id="cart">
+        <h2>Carrinho</h2>
+        <ul id="cartList"></ul>
+        <p>Total: R$<span id="total">0.00</span></p>
     </div>
+
+    <form onsubmit="return validarFormulario();" action="http://jkorpela.fi/cgi-bin/echo.cgi" method="post">
+        <fieldset>
+            <label for="nome">Nome do Cliente:</label>
+            <input type="text" placeholder="Nome" id="nome" name="nome" required>
+
+            <label for="cpf">CPF:</label>
+            <input type="text" placeholder="000.000.000-00" id="cpf" name="cpf" oninput="mascara(this)" required>
+
+            <label for="email">Email:</label>
+            <input type="email" placeholder="exemplo@exemplo.com"  id="email" name="email" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" placeholder="(49) 00000-0000" id="telefone" name="telefone" required>
+
+            <label for="cep">CEP:</label>
+            <input type="text" placeholder="00000-000" id="cep" name="cep" required>
+
+            <input type="submit" value="Finalizar Compra">
+        </fieldset>
+    </form>
+</div>
 </body>
 
 </html>
