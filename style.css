@@ -72,14 +72,7 @@ footer {
 nav li :hover{
     color: rgb(0, 87, 0);
 }
-.container {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+
 
 #products {
   width: 100%;
